@@ -1,0 +1,57 @@
+using System.Runtime.InteropServices;
+
+namespace OOP2PlayerPosition
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int playerPositionX = 5;
+            int playerPositionY = 10;
+            char playerSymbol = '@';
+
+            Player player = new Player(playerPositionX, playerPositionY, playerSymbol);
+
+            Drawer drawer = new Drawer(player);
+
+            drawer.DrawPlayer();
+
+            Console.ReadLine();
+        }
+    }
+
+    class Drawer
+    {
+        public Player Player;
+
+        public Drawer(Player player) 
+        {
+            Player = player; 
+        }
+
+        public void DrawPlayer()
+        {
+            Console.SetCursorPosition(Player.PositionX, Player.PositionY);
+            Player.DrawSymbol();
+        }
+    }
+
+    class Player
+    {
+        private char _symbol;
+        public int PositionX { get; private set; }
+        public int PositionY { get; private set; }
+
+        public Player(int positionX, int positionY, char symbol)
+        {
+            PositionX = positionX;
+            PositionY = positionY;
+            _symbol = symbol;
+        }
+
+        public void DrawSymbol()
+        {
+            Console.Write(_symbol);
+        }
+    }
+}

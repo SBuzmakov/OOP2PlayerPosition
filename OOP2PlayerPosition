@@ -12,9 +12,9 @@ namespace OOP2PlayerPosition
 
             Player player = new Player(playerPositionX, playerPositionY, playerSymbol);
 
-            Drawer drawer = new Drawer(player);
+            Drawer drawer = new Drawer();
 
-            drawer.DrawPlayer();
+            drawer.DrawPlayer(player);
 
             Console.ReadLine();
         }
@@ -22,23 +22,16 @@ namespace OOP2PlayerPosition
 
     class Drawer
     {
-        public Player Player;
-
-        public Drawer(Player player) 
+        public void DrawPlayer(Player player)
         {
-            Player = player; 
-        }
-
-        public void DrawPlayer()
-        {
-            Console.SetCursorPosition(Player.PositionX, Player.PositionY);
-            Player.DrawSymbol();
+            Console.SetCursorPosition(player.PositionX, player.PositionY);
+            Console.Write(player.Symbol);
         }
     }
 
     class Player
     {
-        private char _symbol;
+        public char Symbol { get; private set; }
         public int PositionX { get; private set; }
         public int PositionY { get; private set; }
 
@@ -46,12 +39,7 @@ namespace OOP2PlayerPosition
         {
             PositionX = positionX;
             PositionY = positionY;
-            _symbol = symbol;
-        }
-
-        public void DrawSymbol()
-        {
-            Console.Write(_symbol);
+            Symbol = symbol;
         }
     }
 }

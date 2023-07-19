@@ -6,11 +6,7 @@ namespace OOP2PlayerPosition
     {
         static void Main(string[] args)
         {
-            int playerPositionX = 5;
-            int playerPositionY = 10;
-            char playerSymbol = '@';
-
-            Player player = new Player(playerPositionX, playerPositionY, playerSymbol);
+            Player player = new Player(5, 10);
 
             Drawer drawer = new Drawer();
 
@@ -31,15 +27,15 @@ namespace OOP2PlayerPosition
 
     class Player
     {
-        public char Symbol { get; private set; }
-        public int PositionX { get; private set; }
-        public int PositionY { get; private set; }
-
-        public Player(int positionX, int positionY, char symbol)
+        public Player(int positionX, int positionY, char symbol = '@')
         {
             PositionX = positionX;
             PositionY = positionY;
             Symbol = symbol;
         }
+
+        public char Symbol { get; private set; }
+        public int PositionX { get; private set; }
+        public int PositionY { get; private set; }
     }
 }
